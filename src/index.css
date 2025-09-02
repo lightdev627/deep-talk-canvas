@@ -17,8 +17,8 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 207 95% 47%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -34,7 +34,16 @@ All colors MUST be HSL.
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 207 95% 47%;
+
+    /* Custom chatbot colors */
+    --chatbot-primary: 207 95% 47%; /* #1665d8 */
+    --chatbot-sidebar: 208 36% 94%; /* #edf3fa */
+    --chatbot-sidebar-text: 222 40% 20%;
+    --chatbot-chat-bg: 0 0% 98%;
+    --chatbot-message-user: 207 95% 47%;
+    --chatbot-message-ai: 0 0% 100%;
+    --chatbot-message-border: 220 13% 91%;
 
     --radius: 0.5rem;
 
@@ -101,5 +110,8 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-size: 14px;
+    font-weight: 500;
   }
+}
 }

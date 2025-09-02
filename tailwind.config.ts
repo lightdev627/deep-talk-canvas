@@ -61,6 +61,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				chatbot: {
+					primary: 'hsl(var(--chatbot-primary))',
+					sidebar: 'hsl(var(--chatbot-sidebar))',
+					'sidebar-text': 'hsl(var(--chatbot-sidebar-text))',
+					'chat-bg': 'hsl(var(--chatbot-chat-bg))',
+					'message-user': 'hsl(var(--chatbot-message-user))',
+					'message-ai': 'hsl(var(--chatbot-message-ai))',
+					'message-border': 'hsl(var(--chatbot-message-border))'
 				}
 			},
 			borderRadius: {
