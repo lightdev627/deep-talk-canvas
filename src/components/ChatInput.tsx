@@ -40,13 +40,13 @@ export function ChatInput({
   }, [message]);
 
   return (
-    <div className="border-t border-chatbot-message-border bg-background p-4">
+    <div className="border-t border-chatbot-message-border bg-chatbot-background p-4">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-end gap-3">
           <Button
             size="sm"
             variant="ghost"
-            className="h-10 w-10 p-0 flex-shrink-0"
+            className="h-12 w-10 p-0 flex-shrink-0"
           >
             <Paperclip className="w-4 h-4" />
           </Button>
@@ -59,18 +59,17 @@ export function ChatInput({
               onKeyDown={handleKeyDown}
               placeholder={placeholder}
               disabled={disabled}
-              className="min-h-[44px] max-h-[120px] resize-none border-chatbot-message-border focus:border-chatbot-primary focus:ring-chatbot-primary"
+              className="min-h-[48px] max-h-[120px] resize-none rounded-2xl border-chatbot-message-border focus:border-chatbot-primary focus:ring-chatbot-primary pr-12 bg-white"
               rows={1}
             />
+            <Button
+              onClick={handleSubmit}
+              disabled={!message.trim() || disabled}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 bg-chatbot-primary hover:bg-chatbot-primary/90 disabled:opacity-50 rounded-xl"
+            >
+              <Send className="w-4 h-4" />
+            </Button>
           </div>
-          
-          <Button
-            onClick={handleSubmit}
-            disabled={!message.trim() || disabled}
-            className="h-10 w-10 p-0 bg-chatbot-primary hover:bg-chatbot-primary/90 disabled:opacity-50"
-          >
-            <Send className="w-4 h-4" />
-          </Button>
         </div>
         
         <p className="text-xs text-muted-foreground mt-2 text-center">
