@@ -90,6 +90,12 @@ const Index = () => {
     }
   };
 
+  const handleRenameConversation = (id: string, title: string) => {
+    setConversations(prev => prev.map(conv => 
+      conv.id === id ? { ...conv, title } : conv
+    ));
+  };
+
   const handleSendMessage = async (content: string) => {
     if (!activeConversationId) return;
 
@@ -146,6 +152,7 @@ const Index = () => {
         onNewChat={handleNewChat}
         onSelectConversation={handleSelectConversation}
         onDeleteConversation={handleDeleteConversation}
+        onRenameConversation={handleRenameConversation}
       />
       
       <div className="flex-1 flex flex-col">
