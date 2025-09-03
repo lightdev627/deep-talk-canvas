@@ -47,34 +47,37 @@ export function NewChatForm({ onStartChat }: NewChatFormProps) {
         </div>
 
         <div className="bg-white rounded-2xl p-8 shadow-lg border border-chatbot-message-border space-y-6">
-          {/* Tenant Selection */}
-          <div className="space-y-2">
-            <label className="text-sm font-semibold text-chatbot-sidebar-text">Tenant</label>
-            <Select value={tenant} onValueChange={setTenant}>
-              <SelectTrigger className="w-full h-12 rounded-xl border-2 focus:border-chatbot-primary">
-                <SelectValue placeholder="Select a tenant" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="tenant-1">Tenant 1</SelectItem>
-                <SelectItem value="tenant-2">Tenant 2</SelectItem>
-                <SelectItem value="tenant-3">Tenant 3</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          {/* Tenant and Entity Selection */}
+          <div className="grid grid-cols-2 gap-6">
+            {/* Tenant Selection */}
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-chatbot-sidebar-text">Tenant</label>
+              <Select value={tenant} onValueChange={setTenant}>
+                <SelectTrigger className="w-full h-12 rounded-xl border-2 focus:border-chatbot-primary">
+                  <SelectValue placeholder="Select a tenant" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="tenant-1">Tenant 1</SelectItem>
+                  <SelectItem value="tenant-2">Tenant 2</SelectItem>
+                  <SelectItem value="tenant-3">Tenant 3</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-          {/* Entity Selection */}
-          <div className="space-y-2">
-            <label className="text-sm font-semibold text-chatbot-sidebar-text">Entity</label>
-            <Select value={entity} onValueChange={setEntity}>
-              <SelectTrigger className="w-full h-12 rounded-xl border-2 focus:border-chatbot-primary">
-                <SelectValue placeholder="Select an entity" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="entity-1">Entity 1</SelectItem>
-                <SelectItem value="entity-2">Entity 2</SelectItem>
-                <SelectItem value="entity-3">Entity 3</SelectItem>
-              </SelectContent>
-            </Select>
+            {/* Entity Selection */}
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-chatbot-sidebar-text">Entity</label>
+              <Select value={entity} onValueChange={setEntity}>
+                <SelectTrigger className="w-full h-12 rounded-xl border-2 focus:border-chatbot-primary">
+                  <SelectValue placeholder="Select an entity" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="entity-1">Entity 1</SelectItem>
+                  <SelectItem value="entity-2">Entity 2</SelectItem>
+                  <SelectItem value="entity-3">Entity 3</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           {/* Message Input */}
