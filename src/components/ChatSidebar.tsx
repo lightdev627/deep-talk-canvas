@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus, MessageSquare, Trash2, Edit3, User, LogOut } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
@@ -32,8 +32,6 @@ export function ChatSidebar({
   const [hoveredConversation, setHoveredConversation] = useState<string | null>(null);
   const [editingConversation, setEditingConversation] = useState<string | null>(null);
   const [editTitle, setEditTitle] = useState<string>("");
-  const [tenantId, setTenantId] = useState<string>("");
-  const [entityId, setEntityId] = useState<string>("");
 
   return (
     <div className="flex flex-col h-full bg-chatbot-sidebar" style={{ width: "226px" }}>
@@ -45,45 +43,11 @@ export function ChatSidebar({
         
         <Button
           onClick={onNewChat}
-          className="w-full bg-chatbot-primary hover:bg-chatbot-primary/90 text-white rounded-lg h-10 mb-3"
+          className="w-full bg-chatbot-primary hover:bg-chatbot-primary/90 text-white rounded-lg h-10"
         >
           <Plus className="w-4 h-4 mr-2" />
           New chat
         </Button>
-
-        {/* Tenant ID Selection */}
-        <div className="mb-3">
-          <label className="text-xs text-chatbot-sidebar-text/70 font-medium mb-1 block">
-            Tenant ID
-          </label>
-          <Select value={tenantId} onValueChange={setTenantId}>
-            <SelectTrigger className="w-full h-8 text-xs">
-              <SelectValue placeholder="Select tenant" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="tenant-1">Tenant 1</SelectItem>
-              <SelectItem value="tenant-2">Tenant 2</SelectItem>
-              <SelectItem value="tenant-3">Tenant 3</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        {/* Entity ID Selection */}
-        <div>
-          <label className="text-xs text-chatbot-sidebar-text/70 font-medium mb-1 block">
-            Entity ID
-          </label>
-          <Select value={entityId} onValueChange={setEntityId}>
-            <SelectTrigger className="w-full h-8 text-xs">
-              <SelectValue placeholder="Select entity" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="entity-1">Entity 1</SelectItem>
-              <SelectItem value="entity-2">Entity 2</SelectItem>
-              <SelectItem value="entity-3">Entity 3</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
       </div>
 
       {/* Conversations List */}

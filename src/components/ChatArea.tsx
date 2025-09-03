@@ -13,9 +13,11 @@ interface ChatAreaProps {
   messages: Message[];
   onSendMessage: (message: string) => void;
   isLoading?: boolean;
+  tenant?: string;
+  entity?: string;
 }
 
-export function ChatArea({ messages, onSendMessage, isLoading = false }: ChatAreaProps) {
+export function ChatArea({ messages, onSendMessage, isLoading = false, tenant, entity }: ChatAreaProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -28,6 +30,31 @@ export function ChatArea({ messages, onSendMessage, isLoading = false }: ChatAre
 
   return (
     <div className="flex flex-col h-full bg-chatbot-chat-bg">
+      {/* Tenant/Entity Header */}
+      {(tenant || entity) && (
+        <div className="border-b border-chatbot-message-border bg-white px-6 py-3">
+          <div className="max-w-4xl mx-auto flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-chatbot-primary rounded-md flex items-center justify-center">
+                <span className="text-white text-xs font-bold">T</span>
+              </div>
+              <span className="text-sm font-medium text-chatbot-sidebar-text">
+                {tenant || "Not selected"}
+              </span>
+            </div>
+            <div className="w-px h-4 bg-chatbot-message-border" />
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-amber-500 rounded-md flex items-center justify-center">
+                <span className="text-white text-xs font-bold">E</span>
+              </div>
+              <span className="text-sm font-medium text-chatbot-sidebar-text">
+                {entity || "Not selected"}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto">
         <div className="max-w-4xl mx-auto px-6">
