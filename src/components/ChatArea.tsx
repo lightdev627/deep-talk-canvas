@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
+import { NewChatForm } from "./NewChatForm";
 
 interface Message {
   id: string;
@@ -15,9 +16,11 @@ interface ChatAreaProps {
   isLoading?: boolean;
   tenant?: string;
   entity?: string;
+  showNewChatForm?: boolean;
+  onStartNewChat?: (tenant: string, entity: string, message: string) => void;
 }
 
-export function ChatArea({ messages, onSendMessage, isLoading = false, tenant, entity }: ChatAreaProps) {
+export function ChatArea({ messages, onSendMessage, isLoading = false, tenant, entity, showNewChatForm = false, onStartNewChat }: ChatAreaProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -27,6 +30,11 @@ export function ChatArea({ messages, onSendMessage, isLoading = false, tenant, e
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Show new chat form if no messages and showNewChatForm is true
+  if (showNewChatForm && messages.length === 0 && onStartNewChat) {
+    return <NewChatForm onStartChat={onStartNewChat} />;
+  }
 
   return (
     <div className="flex flex-col h-full bg-chatbot-chat-bg">

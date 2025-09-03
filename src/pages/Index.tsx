@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ChatSidebar } from "@/components/ChatSidebar";
 import { ChatArea } from "@/components/ChatArea";
-import { NewChatModal } from "@/components/NewChatModal";
 
 interface Message {
   id: string;
@@ -24,15 +23,16 @@ const Index = () => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [activeConversationId, setActiveConversationId] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
-  const [showNewChatModal, setShowNewChatModal] = useState(false);
+  const [showNewChatForm, setShowNewChatForm] = useState(true);
 
   const activeConversation = conversations.find(conv => conv.id === activeConversationId);
 
   const handleNewChat = () => {
-    setShowNewChatModal(true);
+    setActiveConversationId(undefined);
+    setShowNewChatForm(true);
   };
 
-  const handleStartChat = (tenant: string, entity: string, firstMessage: string) => {
+  const handleStartNewChat = (tenant: string, entity: string, firstMessage: string) => {
     const newConversation: Conversation = {
       id: Date.now().toString(),
       title: firstMessage.length > 50 ? firstMessage.substring(0, 50) + "..." : firstMessage,
@@ -43,6 +43,7 @@ const Index = () => {
     };
     setConversations(prev => [newConversation, ...prev]);
     setActiveConversationId(newConversation.id);
+    setShowNewChatForm(false);
     
     // Send the first message
     handleSendMessage(firstMessage, newConversation.id);
@@ -50,13 +51,20 @@ const Index = () => {
 
   const handleSelectConversation = (id: string) => {
     setActiveConversationId(id);
+    setShowNewChatForm(false);
   };
 
   const handleDeleteConversation = (id: string) => {
     setConversations(prev => prev.filter(conv => conv.id !== id));
     if (activeConversationId === id) {
       const remaining = conversations.filter(conv => conv.id !== id);
-      setActiveConversationId(remaining.length > 0 ? remaining[0].id : undefined);
+      if (remaining.length > 0) {
+        setActiveConversationId(remaining[0].id);
+        setShowNewChatForm(false);
+      } else {
+        setActiveConversationId(undefined);
+        setShowNewChatForm(true);
+      }
     }
   };
 
@@ -126,42 +134,16 @@ const Index = () => {
       
       <div className="flex-1 flex flex-col">
         <div className="flex-1">
-          {activeConversation ? (
-            <ChatArea
-              messages={activeConversation.messages}
-              onSendMessage={handleSendMessage}
-              isLoading={isLoading}
-              tenant={activeConversation.tenant}
-              entity={activeConversation.entity}
-            />
-          ) : (
-            <div className="flex items-center justify-center h-full bg-chatbot-chat-bg">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-chatbot-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-xl font-bold">AI</span>
-                </div>
-                <h2 className="text-xl font-semibold text-chatbot-sidebar-text mb-2">
-                  Welcome to RAG Chat
-                </h2>
-                <p className="text-chatbot-sidebar-text/70 max-w-md mb-6">
-                  Start a new conversation to begin chatting with our AI assistant.
-                </p>
-                <button
-                  onClick={handleNewChat}
-                  className="bg-chatbot-primary hover:bg-chatbot-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-                >
-                  Start New Chat
-                </button>
-              </div>
-            </div>
-          )}
+          <ChatArea
+            messages={activeConversation?.messages || []}
+            onSendMessage={handleSendMessage}
+            isLoading={isLoading}
+            tenant={activeConversation?.tenant}
+            entity={activeConversation?.entity}
+            showNewChatForm={showNewChatForm}
+            onStartNewChat={handleStartNewChat}
+          />
         </div>
-
-        <NewChatModal
-          isOpen={showNewChatModal}
-          onClose={() => setShowNewChatModal(false)}
-          onStartChat={handleStartChat}
-        />
       </div>
     </div>
   );
