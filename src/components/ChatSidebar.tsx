@@ -37,13 +37,13 @@ export function ChatSidebar({
     <div className="flex flex-col h-full bg-chatbot-sidebar" style={{ width: "226px" }}>
       {/* Header */}
       <div className="p-4 border-b border-chatbot-message-border">
-        <h1 className="text-lg font-semibold text-chatbot-sidebar-text mb-4">
+        <div className="text-lg font-semibold text-chatbot-sidebar-text mb-4">
           CHAT A.I.+
-        </h1>
+        </div>
         
         <Button
           onClick={onNewChat}
-          className="w-full bg-chatbot-primary hover:bg-chatbot-primary/90 text-white rounded-lg h-10"
+          className="w-full bg-chatbot-primary hover:bg-chatbot-primary/90 text-primary-foreground rounded-lg h-10"
         >
           <Plus className="w-4 h-4 mr-2" />
           New chat
@@ -64,8 +64,8 @@ export function ChatSidebar({
                 className={cn(
                   "group relative flex items-center px-3 py-2 rounded-lg cursor-pointer transition-colors",
                   activeConversationId === conversation.id
-                    ? "bg-white shadow-sm"
-                    : "hover:bg-white/50"
+                    ? "bg-card shadow-sm"
+                    : "hover:bg-card/50"
                 )}
                 onClick={() => onSelectConversation(conversation.id)}
                 onMouseEnter={() => setHoveredConversation(conversation.id)}
@@ -139,7 +139,7 @@ export function ChatSidebar({
       <div className="p-4 border-t border-chatbot-message-border">
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="ghost" className="w-full p-0 h-auto justify-start hover:bg-white/50">
+            <Button variant="ghost" className="w-full p-0 h-auto justify-start hover:bg-card/50">
               <div className="flex items-center space-x-3 p-2 w-full">
                 <div className="w-8 h-8 bg-chatbot-primary rounded-full flex items-center justify-center">
                   <User className="w-4 h-4 text-white" />

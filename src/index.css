@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 213 57% 96%; /* brand light background #edf3fa */
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 207 95% 47%;
+    --primary: 215 84% 47%; /* brand blue #1665d8 */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
@@ -34,14 +34,14 @@ All colors MUST be HSL.
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 207 95% 47%;
+    --ring: 215 84% 47%;
 
     /* Custom chatbot colors */
-    --chatbot-primary: 207 95% 47%; /* #1665d8 */
-    --chatbot-sidebar: 208 36% 94%; /* #edf3fa */
+    --chatbot-primary: 215 84% 47%; /* #1665d8 */
+    --chatbot-sidebar: 213 57% 96%; /* #edf3fa */
     --chatbot-sidebar-text: 222 40% 20%;
-    --chatbot-chat-bg: 0 0% 98%;
-    --chatbot-message-user: 207 95% 47%;
+    --chatbot-chat-bg: 213 57% 96%;
+    --chatbot-message-user: 215 84% 47%;
     --chatbot-message-ai: 0 0% 100%;
     --chatbot-message-border: 220 13% 91%;
 

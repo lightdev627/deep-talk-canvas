@@ -35,18 +35,18 @@ export function NewChatForm({ onStartChat }: NewChatFormProps) {
     <div className="flex items-center justify-center h-full bg-chatbot-chat-bg">
       <div className="max-w-2xl w-full mx-auto p-8">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-br from-chatbot-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Sparkles className="w-8 h-8 text-white" />
+          <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Sparkles className="w-8 h-8 text-primary-foreground" />
           </div>
           <h1 className="text-3xl font-bold text-chatbot-sidebar-text mb-2">
-            Welcome to RAG Chat
+            Financial AI Chatbot
           </h1>
           <p className="text-chatbot-sidebar-text/70 text-lg">
-            Let's start a conversation with our AI assistant. Select your tenant and entity, then ask your first question.
+            Start a tenant- and entity-scoped conversation with your virtual financial expert. Choose context, then ask your first question.
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-chatbot-message-border space-y-6">
+        <div className="bg-card rounded-2xl p-8 shadow-lg border border-border space-y-6">
           {/* Tenant and Entity Selection */}
           <div className="grid grid-cols-2 gap-6">
             {/* Tenant Selection */}

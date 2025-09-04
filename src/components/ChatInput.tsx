@@ -40,7 +40,7 @@ export function ChatInput({
   }, [message]);
 
   return (
-    <div className="border-t border-chatbot-message-border bg-chatbot-background p-4">
+    <div className="border-t border-chatbot-message-border bg-background p-4">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-end gap-3">
           <Button
@@ -59,7 +59,7 @@ export function ChatInput({
               onKeyDown={handleKeyDown}
               placeholder={placeholder}
               disabled={disabled}
-              className="min-h-[48px] max-h-[120px] resize-none rounded-2xl border-chatbot-message-border focus:border-chatbot-primary focus:ring-chatbot-primary pr-12 bg-white"
+              className="min-h-[48px] max-h-[120px] resize-none rounded-2xl border-chatbot-message-border focus:border-chatbot-primary focus:ring-chatbot-primary pr-12 bg-card"
               rows={1}
             />
             <Button

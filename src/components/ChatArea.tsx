@@ -40,11 +40,11 @@ export function ChatArea({ messages, onSendMessage, isLoading = false, tenant, e
     <div className="flex flex-col h-full bg-chatbot-chat-bg">
       {/* Tenant/Entity Header */}
       {(tenant || entity) && (
-        <div className="border-b border-chatbot-message-border bg-white px-6 py-3">
+        <div className="border-b border-chatbot-message-border bg-card px-6 py-3">
           <div className="max-w-4xl mx-auto flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-chatbot-primary rounded-md flex items-center justify-center">
-                <span className="text-white text-xs font-bold">T</span>
+            <div className="w-6 h-6 bg-chatbot-primary rounded-md flex items-center justify-center">
+                <span className="text-primary-foreground text-xs font-bold">T</span>
               </div>
               <span className="text-sm font-medium text-chatbot-sidebar-text">
                 {tenant || "Not selected"}
@@ -52,8 +52,8 @@ export function ChatArea({ messages, onSendMessage, isLoading = false, tenant, e
             </div>
             <div className="w-px h-4 bg-chatbot-message-border" />
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-amber-500 rounded-md flex items-center justify-center">
-                <span className="text-white text-xs font-bold">E</span>
+              <div className="w-6 h-6 bg-secondary-foreground rounded-md flex items-center justify-center">
+                <span className="text-primary-foreground text-xs font-bold">E</span>
               </div>
               <span className="text-sm font-medium text-chatbot-sidebar-text">
                 {entity || "Not selected"}
@@ -70,10 +70,10 @@ export function ChatArea({ messages, onSendMessage, isLoading = false, tenant, e
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
                 <div className="w-16 h-16 bg-chatbot-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-xl font-bold">AI</span>
+                  <span className="text-primary-foreground text-xl font-bold">AI</span>
                 </div>
                 <h2 className="text-xl font-semibold text-chatbot-sidebar-text mb-2">
-                  Welcome to RAG Chat
+                  Welcome to your Financial AI Chatbot
                 </h2>
                 <p className="text-chatbot-sidebar-text/70 max-w-md">
                   Start a conversation with our AI assistant. Ask questions about your documents or have a general chat.
